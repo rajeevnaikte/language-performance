@@ -26,7 +26,7 @@ const appController = async (json) => {
 const calculateMonthlyInterest = (months, principalAmount, annualRate) => {
   const result = [];
   for (let month = 1; month < months; month++) {
-    const interest = principalAmount * annualRate / 12/ 100;
+    const interest = Math.round(principalAmount * annualRate / 12/ 100);
     principalAmount += interest;
     result.push({
       month,

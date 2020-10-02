@@ -35,7 +35,11 @@ router.post('/save', authenticateJWT, function(req, res, next) {
 });
 
 router.get('/calculate/monthly/interest', authenticateJWT, function(req, res, next) {
-  res.json(calculateMonthlyInterest(req.query.months, req.query.principalAmount, req.query.annualRate));
+  res.json(calculateMonthlyInterest(
+    parseInt(req.query.months),
+    parseFloat(req.query.principalAmount),
+    parseFloat(req.query.annualRate)
+  ));
 });
 
 module.exports = router;
