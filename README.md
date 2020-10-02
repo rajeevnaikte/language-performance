@@ -1,7 +1,7 @@
 ## Programming Language Runtime performance test
 Comparing programming language runtime performance for building REST API:
-- Java 15
-- NodeJS 14
+- Java v15
+- NodeJS v14
 - more to come...
 
 ## Test Environment
