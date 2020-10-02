@@ -86,10 +86,10 @@ Response:
 
 ## Performance Metric
 #### Calling "Save & Read" and "Calculate monthly interests" - Java serving more TPS.
-- Java resulted in average TPS of 235.28 as compared to NodeJS 162.73.<br>
-- Java average time to process is 23.32 millisecond as compared to NodeJS 92.59 millisecond.<br>
-- From the TPS change chart we can see that Java is slower at the begining, but speeds up as it warms-up.<br>
-**Java**
+- Java resulted in average TPS of 235.28 as compared to NodeJS 162.73.
+- Java average time to process is 23.32 millisecond as compared to NodeJS 92.59 millisecond.
+- From the TPS change chart we can see that Java is slower at the begining, but speeds up as it warms-up.
+###### Java
 ![SaveCalculateJava](./metric/soapui-loadtest-results/Screen%20Shot%202020-10-02%20at%201.05.48%20AM.png)
 
 ###### *TPS changes over time*
@@ -99,7 +99,7 @@ Response:
 |-|-|-|-|-|-|
 | 85.01% | 438MiB / 1.944GiB | 22.01% | 744MB / 1GB | 0B / 0B | 233 |
 
-**NodeJS**
+###### NodeJS
 ![SaveCalculateNodeJS](./metric/soapui-loadtest-results/Screen%20Shot%202020-10-02%20at%201.13.12%20AM.png)
 
 ###### *TPS changes over time*
@@ -110,13 +110,13 @@ Response:
 | 65.75% | 91.45MiB / 1.944GiB | 4.59% | 398MB / 1.57GB | 0B / 0B | 23 |
 
 #### Calling "Save & Read" only - Java and NodeJS serving equal TPS.
-**Java**
+###### Java
 ![SaveJava](./metric/soapui-loadtest-results/Screen%20Shot%202020-10-02%20at%2012.12.15%20AM.png)
 | CPU % | MEM USAGE / LIMIT | MEM % | NET I/O | BLOCK I/O | PIDS |
 |-|-|-|-|-|-|
 | 43.44% | 420.7MiB / 1.944GiB | 21.13% | 796MB / 630MB | 0B / 0B | 230 |
 
-**NodeJS**
+###### NodeJS
 ![SaveNodeJS](./metric/soapui-loadtest-results/Screen%20Shot%202020-10-02%20at%2012.02.12%20AM.png)
 | CPU % | MEM USAGE / LIMIT | MEM % | NET I/O | BLOCK I/O | PIDS |
 |-|-|-|-|-|-|
