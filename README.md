@@ -116,5 +116,5 @@ NodeJS has non-blocking IO, but there will be another thread created to wait for
 and it will also have to remember the scope variables when waiting for async call. In Java it is similar, there will be a thread for each request with thread local memory and waiting for the IO responses. 
 <br><br>
 System usage can be bit more with Java (in the example haven't used the modular build, yet to compare how it will be).
-Java is good with long-running applications and/or having computations, 
+Java is best for long time running applications and/or having computations, which are common reuqirements of REST APIs, 
 whereas NodeJS can be good at ephemeral applications, such as, Lambdas.
