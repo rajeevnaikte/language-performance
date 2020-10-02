@@ -89,8 +89,8 @@ Response:
 **Java**
 ![SaveCalculateJava](./metric/soapui-loadtest-results/Screen%20Shot%202020-10-02%20at%201.05.48%20AM.png)
 
-*TPS changes over time*
-![SaveCalculateJavaChart](./metric/soapui-loadtest-results/Screen%20Shot%202020-10-02%20at%2011.51.40%20AM.png)
+*TPS changes over time*<br>
+<img src="./metric/soapui-loadtest-results/Screen%20Shot%202020-10-02%20at%2011.51.40%20AM.png" width="400">
 
 | CPU % | MEM USAGE / LIMIT | MEM % | NET I/O | BLOCK I/O | PIDS |
 |-|-|-|-|-|-|
@@ -99,8 +99,8 @@ Response:
 **NodeJS**
 ![SaveCalculateNodeJS](./metric/soapui-loadtest-results/Screen%20Shot%202020-10-02%20at%201.13.12%20AM.png)
 
-*TPS changes over time*
-![SaveCalculateNodeJSChart](./metric/soapui-loadtest-results/Screen%20Shot%202020-10-02%20at%2012.00.21%20PM.png)
+*TPS changes over time*<br>
+<img src="./metric/soapui-loadtest-results/Screen%20Shot%202020-10-02%20at%2012.00.21%20PM.png" width="400">
 
 | CPU % | MEM USAGE / LIMIT | MEM % | NET I/O | BLOCK I/O | PIDS |
 |-|-|-|-|-|-|
@@ -124,12 +124,12 @@ NodeJS has non-blocking IO, but when we use async-await, it will need to remembe
 and call stack. When a Java thread is blocked for an IO, it will remember the call stack and local variables and 
 other threads will have availability of CPU time slices. What is exactly non-blocking IO? To understand it well 
 will need to look at what is it at OS level. [How does non-blocking IO work under the hood?](https://medium.com/ing-blog/how-does-non-blocking-io-work-under-the-hood-6299d2953c74) 
-is a good article explaining OS level executions. Once we understand the OS level operations 
+is a good article explaining OS level executions. Once we understand the OS level operations, 
 thinking about what NodeJS event-loop does and what happens in Java will bring more clarity about above performance 
 metric.
 <br><br>
 System resource consumption may seem bit more with Java (in the example haven't used the modular build, yet to compare how it will be). 
-But Java performance improves progressively from server start-up as it warms up. We can see that in chart above. 
+But Java performance improves progressively from server start-up as it warms up. We can see that in chart of TPS change over time, above. 
 For Java the TPS was lower at the beginning and took time to reach higher value. Whereas NodeJS quickly reached a 
 higher TPS, but eventual average TPS is lower than Java. Java is best for long time running applications and/or 
 having computations, whereas NodeJS will be good at ephemeral applications, such as, Lambdas.
