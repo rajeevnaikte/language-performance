@@ -126,6 +126,8 @@ having computations, whereas NodeJS will be good at ephemeral applications, such
 Next is comparing:<br>
 - Python
 - Modular Java
+- Go
+- Rust
 
 ## Usage
 #### Commands to run dockers
