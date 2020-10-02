@@ -134,4 +134,7 @@ For Java the TPS was lower at the beginning and took time to reach higher value.
 higher TPS, but eventual average TPS is lower than Java. Java is best for long time running applications and/or 
 having computations, whereas NodeJS will be good at ephemeral applications, such as, Lambdas.
 <br><br>
-Next is comparing Python.
+Next is comparing:<br>
+- Python
+- By running containers in a cloud environment
+- Modular Java
