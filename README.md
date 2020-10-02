@@ -86,9 +86,9 @@ Response:
 
 ## Performance Metric
 #### Calling "Save & Read" and "Calculate monthly interests" - Java serving more TPS.
-Java resulted in average TPS of 235.28 as compared to NodeJS 162.73.<br>
-Java average time to process is 23.32 millisecond as compared to NodeJS 92.59 millisecond.<br>
-From the TPS change chart we can see that Java is slower at the begining, but speeds up as it warms-up.
+- Java resulted in average TPS of 235.28 as compared to NodeJS 162.73.<br>
+- Java average time to process is 23.32 millisecond as compared to NodeJS 92.59 millisecond.<br>
+- From the TPS change chart we can see that Java is slower at the begining, but speeds up as it warms-up.<br>
 **Java**
 ![SaveCalculateJava](./metric/soapui-loadtest-results/Screen%20Shot%202020-10-02%20at%201.05.48%20AM.png)
 
