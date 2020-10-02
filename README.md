@@ -4,11 +4,23 @@ Comparing programming language runtime performance for building REST API:
 - NodeJS v14
 - more to come...
 
-## Test Environment
-- Docker Engine running in 8 core i9 32GB 2.4GHz Macbook Pro.
-- The app is deployed inside a docker container with --cpus 1 --memory 2048m
-- Two API calls run in sequence - first doing simple data save and fetch, second performing calculations.
+## Load test inputs
+- Two API calls run in sequence - first doing simple data save and read, second performing calculations. Ref: [Tasks performed](#tasks-performed)
 - 5000 virtual users at a time, and repeated for 120 seconds.
+
+## Test Environments
+- [Macbook Pro](#test-environment-macbook-pro)
+    - [Performance Metric](#performance-metric-on-macbook-pro)
+- [AWS ECS](#test-environment-aws-ecs)
+    - [Performance Metric](#performance-metric-on-aws-ecs)
+
+## Test Environment: Macbook Pro
+- Docker Engine running in 8 core i9 32GB 2.4GHz Macbook Pro.
+- Apps are deployed inside docker containers with --cpus 1 --memory 2048m
+
+## Test Environment: AWS ECS
+- Docker Engine running AWS.
+- Apps are deployed in AWS ECS with CPU Units of 512 and Soft Memory Limit of 1024mb.
 
 ## Tasks performed
 #### Save & Read API (POST request)
@@ -27,50 +39,7 @@ Comparing programming language runtime performance for building REST API:
 3. Calculate interest amount and balance amount for each month upto specified number of months.
 4. Return the list of calculated { monthNum, interest, balance } for each month.
 
-## Commands to run dockers
-Run Java app
-```
-docker pull rajeevnaikte/lp-java
-docker run --cpus 1 --memory 2048m -p 8080:8080 rajeevnaikte/lp-java &
-```
-Run NodeJS app
-```
-docker pull rajeevnaikte/lp-node
-docker run --cpus 1 --memory 2048m -p 3000:3000 rajeevnaikte/lp-node &
-```
-## API
-Headers common for all APIs
-```
-// Below JWT token has been hardcoded, please use the same.
-Headers:
-    Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXIiLCJpYXQiOjE2MDE1OTc5MDAsImV4cCI6MTYzMzEzMzkwMCwiYXVkIjoid3d3LmV4YW1wbGUuY29tIiwic3ViIjoianJvY2tldEBleGFtcGxlLmNvbSIsIkdpdmVuTmFtZSI6IkpvaG5ueSIsIlN1cm5hbWUiOiJSb2NrZXQiLCJFbWFpbCI6Impyb2NrZXRAZXhhbXBsZS5jb20iLCJSb2xlIjpbIk1hbmFnZXIiLCJQcm9qZWN0IEFkbWluaXN0cmF0b3IiXX0.9fc6nHuQdPr5aDtBTMLd3nLK4lDKUacQY0-_1ZcZymA
-```
-POST /save
-```
-Body:
-    // Any JSON data. A sample file is in root of this repo - request.json
-
-Response:
-    // same JSON
-```
-GET /calculate/monthly/interest
-```
-Query parameters:
-    months - number of months
-    principalAmount - initial amount
-    annualRate - annual interest rate
-
-Response:
-    [
-        {
-            month: <month number>,
-            interest: <interst amount for the month>,
-            balance: <balance at the month>
-        }
-    ]
-```
-
-## SoapUI Load Test Metric column description (this will assist in understanding images below)
+## Load Test Metric legend (this will assist in understanding images below)
 | Column Name | Description |
 |-|-|
 | min |	The shortest time the step has taken (in milliseconds). |
@@ -84,11 +53,11 @@ Response:
 | err |	The number of assertion errors for the test step. |
 | rat |	Failed requests ratio (the percentage of requests that failed). |
 
-## Performance Metric
+## Performance Metric on Macbook Pro
 #### Calling "Save & Read" and "Calculate monthly interests" - Java serving more TPS.
 - Java resulted in average TPS of 235.28 as compared to NodeJS 162.73.
 - Java average time to process is 23.32 millisecond as compared to NodeJS 92.59 millisecond.
-- From the TPS change chart we can see that Java is slower at the begining, but speeds up as it warms-up.
+- From the TPS change chart we can see that Java is slower at the beginning, but speeds up as it warms-up.
 ###### Java
 ![SaveCalculateJava](./metric/soapui-loadtest-results/Screen%20Shot%202020-10-02%20at%201.05.48%20AM.png)
 
@@ -122,6 +91,23 @@ Response:
 |-|-|-|-|-|-|
 | 50.35% | 105.3MiB / 1.944GiB | 5.29% | 537MB / 411MB | 0B / 0B | 23 |
 
+## Performance Metric on AWS ECS
+#### Calling "Save & Read" and "Calculate monthly interests" - Java serving more TPS.
+- Java resulted in average TPS of 141.28 as compared to NodeJS 132.32.
+- Java has lower "no response" errors compared to NodeJS when doing file IO operations.
+- From the TPS change chart we can see that Java is slower at the beginning, but speeds up as it warms-up.
+###### Java
+![SaveCalculateJava](./metric/soapui-loadtest-results/Screen%20Shot%202020-10-02%20at%206.21.59%20PM.png)
+
+###### *TPS changes over time*
+<img src="./metric/soapui-loadtest-results/Screen%20Shot%202020-10-02%20at%206.10.32%20PM.png" width="400">
+
+###### NodeJS
+![SaveCalculateNodeJS](./metric/soapui-loadtest-results/Screen%20Shot%202020-10-02%20at%206.21.05%20PM.png)
+
+###### *TPS changes over time*
+<img src="./metric/soapui-loadtest-results/Screen%20Shot%202020-10-02%20at%206.21.35%20PM.png" width="400">
+
 ## Conclusion
 NodeJS has non-blocking IO, but when we use async-await, it will need to remember the outer scope variables 
 and call stack. When a Java thread is blocked for an IO, it will remember the call stack and local variables and 
@@ -139,5 +125,48 @@ having computations, whereas NodeJS will be good at ephemeral applications, such
 <br><br>
 Next is comparing:<br>
 - Python
-- By running containers in a cloud environment
 - Modular Java
+
+## Usage
+#### Commands to run dockers
+Run Java app
+```
+docker pull rajeevnaikte/lp-java
+docker run --cpus 1 --memory 2048m -p 8080:8080 rajeevnaikte/lp-java &
+```
+Run NodeJS app
+```
+docker pull rajeevnaikte/lp-node
+docker run --cpus 1 --memory 2048m -p 3000:3000 rajeevnaikte/lp-node &
+```
+#### API
+Headers common for all APIs
+```
+// Below JWT token has been hardcoded, please use the same.
+Headers:
+    Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXIiLCJpYXQiOjE2MDE1OTc5MDAsImV4cCI6MTYzMzEzMzkwMCwiYXVkIjoid3d3LmV4YW1wbGUuY29tIiwic3ViIjoianJvY2tldEBleGFtcGxlLmNvbSIsIkdpdmVuTmFtZSI6IkpvaG5ueSIsIlN1cm5hbWUiOiJSb2NrZXQiLCJFbWFpbCI6Impyb2NrZXRAZXhhbXBsZS5jb20iLCJSb2xlIjpbIk1hbmFnZXIiLCJQcm9qZWN0IEFkbWluaXN0cmF0b3IiXX0.9fc6nHuQdPr5aDtBTMLd3nLK4lDKUacQY0-_1ZcZymA
+```
+POST /save
+```
+Body:
+    // Any JSON data. A sample file is in root of this repo - request.json
+
+Response:
+    // same JSON
+```
+GET /calculate/monthly/interest
+```
+Query parameters:
+    months - number of months
+    principalAmount - initial amount
+    annualRate - annual interest rate
+
+Response:
+    [
+        {
+            month: <month number>,
+            interest: <interst amount for the month>,
+            balance: <balance at the month>
+        }
+    ]
+```
