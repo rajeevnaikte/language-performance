@@ -5,7 +5,7 @@ Comparing programming language runtime performance for building REST API:
 - more to come...
 
 ## Load test inputs
-- Two API calls run in sequence - first doing simple data save and read, second performing calculations. Ref: [Tasks performed](#tasks-performed)
+- Two API calls run in sequence - first doing simple data [Save and Read](#save--read-api-post-request), second performing [Monthly Interests Calculations](#calculate-monthly-interests-api-get-request).
 - 5000 virtual users at a time, and repeated for 120 seconds.
 
 ## Test Environments
@@ -16,11 +16,11 @@ Comparing programming language runtime performance for building REST API:
 
 ## Test Environment: Macbook Pro
 - Docker Engine running in 8 core i9 32GB 2.4GHz Macbook Pro.
-- Apps are deployed inside docker containers with --cpus 1 --memory 2048m
+- Apps are deployed inside docker containers with **--cpus 1 --memory 2048m**
 
 ## Test Environment: AWS ECS
 - Docker Engine running AWS.
-- Apps are deployed in AWS ECS with CPU Units of 512 and Soft Memory Limit of 1024mb.
+- Apps are deployed in AWS ECS with **CPU Units of 512 and Soft Memory Limit of 1024mb**.
 
 ## Tasks performed
 #### Save & Read API (POST request)
@@ -117,10 +117,10 @@ is a good article explaining OS level executions. Once we understand the OS leve
 thinking about what NodeJS event-loop does and what happens in Java will bring more clarity about above performance 
 metric.
 <br><br>
-System resource consumption may seem bit more with Java (in the example haven't used the modular build, yet to compare how it will be). 
+System resource consumption is bit more with Java (in the example haven't used the modular build, yet to compare how it will be). 
 But Java performance improves progressively from server start-up as it warms up. We can see that in chart of [TPS change over time](#tps-changes-over-time), above. 
 For Java the TPS was lower at the beginning and took time to reach higher value. Whereas NodeJS quickly reached a 
-higher TPS, but eventual average TPS is lower than Java. Java is best for long time running applications and/or 
+higher TPS, but eventual average TPS is lower than Java. Java is best for applications with longer life span and/or 
 having computations, whereas NodeJS will be good at ephemeral applications, such as, Lambdas.
 <br><br>
 Next is comparing:<br>
@@ -148,7 +148,7 @@ Headers common for all APIs
 Headers:
     Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXIiLCJpYXQiOjE2MDE1OTc5MDAsImV4cCI6MTYzMzEzMzkwMCwiYXVkIjoid3d3LmV4YW1wbGUuY29tIiwic3ViIjoianJvY2tldEBleGFtcGxlLmNvbSIsIkdpdmVuTmFtZSI6IkpvaG5ueSIsIlN1cm5hbWUiOiJSb2NrZXQiLCJFbWFpbCI6Impyb2NrZXRAZXhhbXBsZS5jb20iLCJSb2xlIjpbIk1hbmFnZXIiLCJQcm9qZWN0IEFkbWluaXN0cmF0b3IiXX0.9fc6nHuQdPr5aDtBTMLd3nLK4lDKUacQY0-_1ZcZymA
 ```
-POST /save
+`POST` `/save`
 ```
 Body:
     // Any JSON data. A sample file is in root of this repo - request.json
@@ -156,7 +156,7 @@ Body:
 Response:
     // same JSON
 ```
-GET /calculate/monthly/interest
+`GET` `/calculate/monthly/interest`
 ```
 Query parameters:
     months - number of months
