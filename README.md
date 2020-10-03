@@ -115,7 +115,11 @@ other threads will have availability of CPU time slices. What is exactly non-blo
 will need to look at what is it at OS level. [How does non-blocking IO work under the hood?](https://medium.com/ing-blog/how-does-non-blocking-io-work-under-the-hood-6299d2953c74) 
 is a good article explaining OS level executions. Once we understand the OS level operations, 
 thinking about what NodeJS event-loop does and what happens in Java will bring more clarity about above performance 
-metric.
+metric that why Java has better TPS performance. How well the system resources shared among the threads makes a difference 
+in performance, and being statically typed program helps in having optimized runtime code.
+<br><br>
+Is JavaScript easier to code? Yes it is for small tasks. But when enterprise level software is required, we need type validations. 
+So the Typescript being used widely. Which becomes similar to Java being statically typed in built and results in optimized code when compiled.
 <br><br>
 System resource consumption is bit more with Java (in the example haven't used the modular build, yet to compare how it will be). 
 But Java performance improves progressively from server start-up as it warms up. We can see that in chart of [TPS change over time](#tps-changes-over-time), above. 
