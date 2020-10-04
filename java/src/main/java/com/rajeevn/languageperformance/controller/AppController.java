@@ -23,7 +23,7 @@ public class AppController
 
     ObjectMapper mapper = new ObjectMapper();
 
-    static class MonthlyDetail
+    public static class MonthlyDetail
     {
         public Integer month;
         public Integer interest;
