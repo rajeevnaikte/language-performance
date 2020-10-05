@@ -110,6 +110,13 @@ Comparing programming language runtime performance for building REST API:
 <img src="./metric/soapui-loadtest-results/Screen%20Shot%202020-10-02%20at%206.21.35%20PM.png" width="400">
 
 ## Conclusion
+|REST API Requirements|Java|NodeJS|
+|-|-|-|
+|Authentication|Various packages available|Various packages available|
+|Writing task steps synchronously|Synchronous by default. Asynchronous can be coded if needed.|Asynchronous by defult. Async-await to achieve synchronous. If one of deep nested method requires a synchronous call then need to update all the methods in the call stack.|
+|Type validaions|Compile time validation in built and resulting optimized code build.|Compile time validation with Typescript.|
+|Object Oriented Programming (OOP)|By default.|With Typescript.|
+<br>
 NodeJS has non-blocking IO, but when we use async-await, it will need to remember the outer scope variables 
 and call stack. When a Java thread is blocked for an IO, it will remember the call stack and local variables and 
 other threads will have availability of CPU time slices. What is exactly non-blocking IO? To understand it well 
