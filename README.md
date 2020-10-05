@@ -7,6 +7,7 @@ Comparing programming language runtime performance for building REST API:
 ## Load test inputs
 - **Two API calls** run in sequence - first doing simple data [Save and Read](#save--read-api-post-request), second performing [Monthly Interests Calculations](#calculate-monthly-interests-api-get-request).
 - **5000 virtual users** at a time, and repeated for 120 seconds.
+- Load test with [SoapUI](https://www.soapui.org/)
 
 ## Test Environments
 - [Macbook Pro](#test-environment-macbook-pro)
