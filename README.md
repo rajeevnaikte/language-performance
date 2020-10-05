@@ -129,6 +129,8 @@ in performance, and being statically typed program helps in having optimized run
 Is JavaScript easier to code? Yes it is for small tasks. But when enterprise level software is required, we need type validations and OOP design patterns. 
 So the Typescript being used widely. Which becomes similar to Java, which is OOP and statically typed in built and results in better optimized code when compiled.
 <br><br>
+In the era of Enterprise Java Bean (EJB) and JBOSS, the java ecosystem had become overly complicated. Now that we have come back to Plain Old Java Object (POJO) and with [Spring Framework](https://spring.io/) building a server app is much easier.
+<br><br>
 System resource consumption is bit more with Java (in the example haven't used the modular build, yet to compare how it will be). 
 But Java performance improves progressively from server start-up as it warms up. We can see that in chart of [TPS change over time](#tps-changes-over-time), above. 
 For Java the TPS was lower at the beginning and took time to reach higher value. Whereas NodeJS quickly reached a 
