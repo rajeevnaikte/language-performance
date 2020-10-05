@@ -114,8 +114,8 @@ Comparing programming language runtime performance for building REST API:
 |-|-|-|
 |Authentication|Various packages available|Various packages available|
 |Writing IO task steps synchronously|Synchronous by default. Asynchronous can be coded if needed.|Asynchronous by defult. Async-await to achieve synchronous. If one of deep nested method requires a synchronous call then need to update all the methods in the call stack.|
-|Type validaions|Compile time validation in built and resulting optimized code build.|Compile time validation with Typescript.|
-|Object Oriented Programming (OOP)|By default.|With Typescript.|
+|Type validaions|Compile time validation in-built and resulting optimized code build.|Compile time validation with Typescript.|
+|Object Oriented Programming (OOP)|In-built. Statically typed.|With Typescript and adds extra JS code after compiling.|
 <br>
 NodeJS has non-blocking IO, but when we use async-await, it will need to remember the outer scope variables 
 and call stack. When a Java thread is blocked for an IO, it will remember the call stack and local variables and 
