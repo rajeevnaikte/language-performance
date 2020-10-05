@@ -119,8 +119,8 @@ thinking about what NodeJS event-loop does and what happens in Java will bring m
 metric that why Java has better TPS performance. How well the system resources shared among the threads makes a difference 
 in performance, and being statically typed program helps in having optimized runtime code.
 <br><br>
-Is JavaScript easier to code? Yes it is for small tasks. But when enterprise level software is required, we need type validations. 
-So the Typescript being used widely. Which becomes similar to Java, which is statically typed in built and results in better optimized code when compiled.
+Is JavaScript easier to code? Yes it is for small tasks. But when enterprise level software is required, we need type validations and OOP design patterns. 
+So the Typescript being used widely. Which becomes similar to Java, which is OOP and statically typed in built and results in better optimized code when compiled.
 <br><br>
 System resource consumption is bit more with Java (in the example haven't used the modular build, yet to compare how it will be). 
 But Java performance improves progressively from server start-up as it warms up. We can see that in chart of [TPS change over time](#tps-changes-over-time), above. 
