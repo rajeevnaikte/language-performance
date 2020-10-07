@@ -116,6 +116,8 @@ Comparing programming language runtime performance for building REST API:
 |Writing IO task steps synchronously|Synchronous by default. Asynchronous can be coded if needed.|Asynchronous by defult. Async-await to achieve synchronous. If one of deep nested method requires a synchronous call then need to update all the methods in the call stack.|
 |Type validaions|Compile time validation in-built and resulting optimized code build.|Compile time validation with Typescript.|
 |Object Oriented Programming (OOP)|In-built. Statically typed.|With Typescript and adds extra JS code after compiling.|
+|Libraries for server side tasks (e.g. rate-limiter, XML+XSD, PDF, Excel, image processing)|Large ecosystem.|Less or no packages where there are computational intensive tasks.|
+|Ease of building app|In the era of Enterprise Java Bean (EJB) and JBOSS, the java ecosystem had become overly complicated. Now that we have come back to Plain Old Java Object (POJO) and with [Spring Framework](https://spring.io/) building a server app is much easier.|Easy write code in functional style for small app or OOP with typescript.|
 <br>
 NodeJS has non-blocking IO, but when we use async-await, it will need to remember the outer scope variables 
 and call stack. When a Java thread is blocked for an IO, it will remember the call stack and local variables and 
@@ -125,11 +127,6 @@ is a good article explaining OS level executions. Once we understand the OS leve
 thinking about what NodeJS event-loop does and what happens in Java will bring more clarity about above performance 
 metric that why Java has better TPS performance. How well the system resources shared among the threads makes a difference 
 in performance, and being statically typed program helps in having optimized runtime code.
-<br><br>
-Is JavaScript easier to code? Yes it is for small tasks. But when enterprise level software is required, we need type validations and OOP design patterns. 
-So the Typescript being used widely. Which becomes similar to Java, which is OOP and statically typed in built and results in better optimized code when compiled.
-<br><br>
-In the era of Enterprise Java Bean (EJB) and JBOSS, the java ecosystem had become overly complicated. Now that we have come back to Plain Old Java Object (POJO) and with [Spring Framework](https://spring.io/) building a server app is much easier.
 <br><br>
 System resource consumption is bit more with Java (in the example haven't used the modular build, yet to compare how it will be). 
 But Java performance improves progressively from server start-up as it warms up. We can see that in chart of [TPS change over time](#tps-changes-over-time), above. 
