@@ -117,8 +117,8 @@ Comparing programming language runtime performance for building REST API:
 |Type validaions|Compile time validation in-built and resulting optimized code build.|Compile time validation with Typescript.|
 |Object Oriented Programming (OOP)|In-built. Statically typed.|With Typescript and adds extra JS code after compiling.|
 |Libraries for server side tasks (e.g. rate-limiter, XML+XSD, PDF, Excel, image processing)|Large ecosystem.|Less or no packages where there are computational intensive tasks.|
-|Ease of building app|In the era of Enterprise Java Bean (EJB) and JBOSS, the java ecosystem had become overly complicated. Now that we have come back to Plain Old Java Object (POJO) and with [Spring Framework](https://spring.io/) building a server app is much easier.|Easy write code in functional style for small app or OOP with typescript.|
-<br>
+|Ease of building app|In the era of Enterprise Java Bean (EJB) and JBOSS, the java ecosystem had become overly complicated. Now that we have come back to Plain Old Java Object (POJO) and with [Spring Framework](https://spring.io) building a server app is much easier.|Easy write code in functional style for small app or OOP with typescript.|
+
 NodeJS has non-blocking IO, but when we use async-await, it will need to remember the outer scope variables 
 and call stack. When a Java thread is blocked for an IO, it will remember the call stack and local variables and 
 other threads will have availability of CPU time slices. What is exactly non-blocking IO? To understand it well 
